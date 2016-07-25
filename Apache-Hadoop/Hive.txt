@@ -1,0 +1,14 @@
+
+# Hive
+    # Run beeline to access interactively
+    beeline -u jdbc:hive2://
+    
+    # In the interactive shell
+        CREATE TABLE userinfo ( uname STRING, pswd STRING, uid INT, gid INT, fullname STRING, hdir STRING, shell STRING ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ':' STORED AS TEXTFILE;
+        
+        LOAD DATA INPATH '/tmp/passwd' OVERWRITE INTO TABLE userinfo;
+        
+        SELECT uname, ... FROM userinfo ORDER BY uname;
+        
+        # exit
+        !q

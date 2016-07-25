@@ -1,0 +1,21 @@
+
+# Pig
+    # Set MapReduce execution mode and start "grunt"  shell
+    pig -x mapreduce 
+    
+    # From "grunt" shell:
+    
+        # Load password data file, where fields are separated by ':'
+        A = load '/user/cloudera/passwd' using PigStarage(':');
+        
+        # Pick a subset of values
+        B = foreach A generate $0, $4, $5;
+        
+        # Print B
+        dump B;
+        
+        # Store data into a directory called 'userinfo.out' with the result and _SUCCESS file
+        store B into 'userinfo.out';
+        
+        # exit
+        quit

@@ -1,0 +1,21 @@
+    
+# Hbase
+    #Start hbase shell
+    hbase shell
+    
+        #Create table
+        create 'userinfotable',{NAME=>'username'},{NAME=>'fullname'},{NAME=>'homedir'}
+
+        # Put a row into 'table', 'row_key', 'column', 'value'
+        put 'userinfotable', 'r1', 'username', 'vcsa'   
+        put 'userinfotable', 'r1', 'fullname', 'VirtualMachine Admin'
+        put 'userinfotable', 'r1', 'homedir', '/user/vcsa'
+        
+        # Show table data
+        scan 'userinfotable'
+
+        # Show only a column data
+        scan 'userinfotable',{COLUMNS=>'fullname'}
+        
+        # exit
+        exit

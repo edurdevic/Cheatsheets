@@ -1,0 +1,56 @@
+
+# command line snippets
+https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html
+
+
+# Copy local file to and from hadoop fs
+    hadoop fs –copyFromLocal words.txt
+    hadoop fs -copyToLocal words2.txt 
+# Or
+    hdfs dfs -get sample.txt /user/test     #From hdfs to local
+    hdfs dfs -put /etc/passwd /user/cloudera/
+ 
+# File operations 
+# hadoop fs [operation]     or     hdfs dfs [operation]
+    hadoop fs –ls               Display content
+    hadoop fs -cp words.txt words2.txt    
+    hadoop fs -rm words2.txt
+    hadoop fs -rmr /direc/      Removes recoursively
+    hdfs dfs -ls -R             Recrsive Display content
+    hdfs dfs -du [path]         Disk usage
+    hdfs dfs - dus [path]       Summary of disk usage
+    ... -mv, -cat, -tail, -chmod, -chown, -help, ...
+
+# Run JAR
+    hadoop jar /usr/jars/hadoop-examples.jar
+
+# Get file details (health, replication, blocks, datanodes, racks, etc.)
+    hdfs fsck /user/test/sample.txt
+
+
+# ADMIN
+# Get admin report of hdfs cluster with all datanodes
+    hdfs dfsadmin -report    
+
+
+# HDFS Configuration file
+    more /etc/hadoop/conf/hdfs-site.xml
+
+
+
+# using REST API
+https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html
+
+    # ls (list files)
+    curl -i "http://quickstart.cloudera:14000/webhdfs/v1/user/cloudera?user.name=cloudera&op=GETFILESTATUS"
+
+    # Content summar
+    curl -i "http://quickstart.cloudera:14000/webhdfs/v1/user/cloudera?user.name=cloudera&op=GETCONTENTSUMMARY"
+    
+    # mkdir (create directory)
+    curl -i "http://quickstart.cloudera:14000/webhdfs/v1/user/cloudera?user.name=cloudera&op=MKDIRS&permission=755"
+
+    More HTTP methods can be used (GET, PUT, POST, DELETE)
+    
+    
+    

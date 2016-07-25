@@ -1,0 +1,4 @@
+
+# Create a file with random data
+dd if=/dev/urandom of=sample.txt bs=64M count=16
+

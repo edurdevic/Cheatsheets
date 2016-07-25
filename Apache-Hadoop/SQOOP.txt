@@ -1,0 +1,18 @@
+
+# SQOOP (Sql to Hadoop)
+# Imports all tables from MYSQL to Hadoop in avro format, ready to be processed
+sqoop import-all-tables \
+    -m 1 \
+    --connect jdbc:mysql://quickstart:3306/retail_db \
+    --username=retail_dba \
+    --password=cloudera \
+    --compression-codec=snappy \
+    --as-avrodatafile \
+    --warehouse-dir=/user/hive/warehouse
+    
+    # The schema gets generated in the home directory of execution:
+    ls -l *.avsc
+    # While files are in hadoop fs. To list tables
+    hadoop fs -ls /user/hive/warehouse
+    # To list files
+    hadoop fs -ls /user/hive/warehouse/categories/

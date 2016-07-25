@@ -1,0 +1,58 @@
+SETUP
+
+sudo easy_install ipython==1.2.1
+
+#Launch pyspark
+PYSPARK_DRIVER_PYTHON=ipython pyspark
+
+
+------- Examples -------
+
+fileA = sc.textFile("input/join1_FileA.txt")
+fileA.collect()
+
+# Using wildcards
+show_channel_file = sc.textFile("input/join2_genchan?.txt")
+
+### Actions 
+show_channel_file.take(2) # returns the first two elements from RDD
+show_channel_file.collect() # Returns all elements of RDD
+
+
+------- Lecture notes ----------
+
+
+Integer_RDD = sc.parallelize(range(10), 3) // sends data to 3 nodes
+Integer_RDD.collect() // collects the data back to the main program
+// [0,1,2,…,9]
+
+Check partitioned data
+Integer_rdd.glom().collect() // collects data but splitted per node
+// [[0,1,2],…[7,8,9]]
+
+//text from local file system
+Text_RDD = sc.textFile("file:///home/cloudera/testfile1")
+
+//text from HDFS
+Text_RDD = sc.textFile("/user/cloudera/testfile1")
+
+Text_RDD.take(1) #outputs the first line
+
+Methods (transformations)
+	• Map – one element in input, one in output
+	• FlatMap – similar to map, but can have more outputs for one input
+    • Reduce - 
+	• GroupByKey - 
+	• ReduceByKey – if you need both groupByKey and then a reduce, use better this one that tries to reduce as much as possible before shuffling.
+	• Filter – takes a function as parameter, which takes one input an returns true/false. Filter keeps only records for which output is true
+	• Coalesce – reduces the number of partitions, usually used after filter
+	• Repartition – as coalesce, but also repartitions the data over the cluster. 
+    • SaveAsTextFile - Useful to save the result in HDFS
+    • Cache() - caches RDD im memory.
+    • Take(N) - takes N elements of the results
+    
+--- Broadcast ---
+
+config = sc.broadcast({'order': 3}) #-> spark context sends a broadcast variable to all the nodes. 
+config.value # Variable available at every node.
+
