@@ -15,9 +15,6 @@ SHELL := /bin/bash
 # Get readlink (if running on Linux) or greadlink (if running on Mac)
 READLINK := $(shell command -v greadlink || echo readlink)
 
-# Optional:
-# Additional workspace directories
-# ADDITIONAL_WORKSPACE ?= $(shell $(READLINK) -f ../some-folder)
 
 # Define exact python version and path
 PYTHON ?= $(shell which python2.7)
@@ -36,12 +33,5 @@ devenv: Makefile requirements.txt
 	# Update the last modified timestamp
 	touch devenv	
 
-# Task that runs the Jupyter notebook
-run: Makefile
-	# Optional:
-	# PYTHONPATH=$PYTHONPATH:ADDITIONAL_WORKSPACE
-	
-	devenv/bin/jupyter notebook	
-
-clean:
+distclean:
 	rm -rf devenv/
