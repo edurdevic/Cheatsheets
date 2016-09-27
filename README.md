@@ -19,6 +19,7 @@ A collection of jupyter notebooks
 * Preconditions
 * Read-or-persist (template for reading from a remote source and persist data to local folder)
 * Template (A template notebook tu jump start with common requirements)
+* Uncertainties (Use of uncertainties library to account for error in calculations)
 
 ## Server Ubuntu 16.04
 
