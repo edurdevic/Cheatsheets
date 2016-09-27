@@ -12,6 +12,14 @@ This repository is not intended as a learning base, it is just a collections of 
   * Numpy
   * Scikit learn 
 
+## Python Jupyter Notebook
+
+A collection of jupyter notebooks
+* Pandas
+* Preconditions
+* Read-or-persist (template for reading from a remote source and persist data to local folder)
+* Template (A template notebook tu jump start with common requirements)
+
 ## Server Ubuntu 16.04
 
 * Setup of environment
