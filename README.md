@@ -3,6 +3,21 @@ Collection of bash commands and code snippets for Data Science and more.
 
 This repository is not intended as a learning base, it is just a collections of commands and snippets that can be used to refresh your memory.
 
+## Apache-Hadoop
+
+Basic commands and templates for
+* Hadoop FS
+* Hive
+* Pig
+* Spark
+* SQOOP
+
+## bash
+
+Collection of sample Bash commands
+* Simple and general commands
+* Data manipulation commands
+
 ## Python
 
 * Creating isolated environment using a Makefile
@@ -28,12 +43,3 @@ A collection of jupyter notebooks
   * Docker Machine
   * Docker Swarm
   * Docker Compose
-
-## Apache-Hadoop
-
-Basic commands and templates for
-* Hadoop FS
-* Hive
-* Pig
-* Spark
-* SQOOP
